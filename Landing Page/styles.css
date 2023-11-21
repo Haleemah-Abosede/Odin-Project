@@ -7,6 +7,10 @@
   flex-wrap: wrap;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 header {
   display: flex;
   justify-content: space-between;
