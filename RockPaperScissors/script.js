@@ -1,28 +1,35 @@
-const getPlayerChoice = (userInput) => {
-  if (userInput.toLowerCase() === "rock") {
-    return userInput;
-  } else if (userInput.toLowerCase() === "paper") {
-    return userInput;
-  } else if (userInput.toLowerCase() === "scissors") {
-    return userInput;
-  } else {
-    console.log("Error! Invalid Input");
-  }
-};
+const displayChoice = document.querySelector(".your-choice");
+const displaycomputer = document.querySelector(".computer-choice");
+const result = document.querySelector(".result");
+
+moves = document.querySelector(".moves");
+maxrounds = 5;
+round = 0;
+humanScore = 0;
+computer = 0;
+
+const play = document.querySelector(".play-game");
+
+let playerChoice;
+let computerChoice;
+let score;
+
+const buttons = document.querySelectorAll("button.player-btn");
+buttons.forEach((button) =>
+  button.addEventListener("click", (e) => {
+    playerChoice = e.target.value;
+    getComputerChoice();
+    computerChoice = getComputerChoice();
+  })
+);
 
 const getComputerChoice = () => {
-  const randomNum = Math.floor(Math.random() * 3);
-
-  if (randomNum === 0) {
-    return "rock";
-  } else if (randomNum === 1) {
-    return "paper";
-  } else if (randomNum === 2) {
-    return "scissors";
-  }
+  const input = ["rock", "paper", "scissors"];
+  const randomNum = Math.floor(Math.random() * input.length);
+  return input[randomNum];
 };
 
-const gameWinner = (playerChoice, computerChoice) => {
+gameWinner = () => {
   if (playerChoice === computerChoice) {
     return "Lucky you! The game is a tie";
   } else if (playerChoice === "rock") {
@@ -46,14 +53,10 @@ const gameWinner = (playerChoice, computerChoice) => {
   }
 };
 
-const playGame = () => {
-  const userChoice = prompt("Select rock, paper or scissors");
-  const playerChoice = getPlayerChoice(userChoice);
-  console.log("You chose " + playerChoice);
-  const computerChoice = getComputerChoice();
-  console.log("Computer chose " + computerChoice);
+play.addEventListener("click", () => {
+  result.textContent = gameWinner();
+  displayChoice.textContent = "You chose " + playerChoice;
+  displaycomputer.textContent = "Computer chose " + computerChoice;
+});
 
-  console.log(gameWinner(playerChoice, computerChoice));
-};
-
-playGame();
+function updateRound() {}

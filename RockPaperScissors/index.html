@@ -4,8 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <h1>Let's play <span>Janken</span></h1>
+    <p>Moves Left: <span class="moves"></span></p>
+    <main>
+      <p>Player's selection:</p>
+      <div class="player">
+        <button class="btn player-btn" value="rock">Rock</button>
+        <button class="btn player-btn" value="paper">Paper</button>
+        <button class="btn player-btn" value="scissors">Scissors</button>
+      </div>
+      <div class="your-choice"></div>
+
+      <p>Computer's selection:</p>
+      <div class="computer">
+        <button class="no-hover">Rock</button>
+        <button class="no-hover">Paper</button>
+        <button class="no-hover">Scissors</button>
+      </div>
+      <div class="computer-choice"></div>
+
+      <button class="play-game">Play Game</button>
+    </main>
+    <div class="result"></div>
+
     <script src="./script.js"></script>
   </body>
 </html>
