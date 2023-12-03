@@ -41,8 +41,7 @@ function createBoard(size) {
 
 function spreadColor() {
   if (color == "random") {
-    colorValue = Math.floor(Math.randon() * 0xffffff).toString(16);
-    this.style.backgroundColor = `#${colorValue}`;
+    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
   } else if (color == "monochrome") {
     this.style.backgroundColor = "blue";
   } else if (color == "grayscale") {
@@ -53,7 +52,7 @@ function spreadColor() {
 }
 
 function setColor(colorChoice) {
-  let color = colorChoice;
+  color = colorChoice;
 }
 
 function getSize() {
@@ -68,3 +67,5 @@ function getSize() {
     return input;
   }
 }
+
+function resetBtn() {}
