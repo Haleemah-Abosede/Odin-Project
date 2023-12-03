@@ -18,16 +18,18 @@ body {
   background-color: var(--brown);
   color: var(--black);
   width: 100%;
-  height: 100svh;
+  overflow-x: hidden;
+  margin: 3em auto;
   display: flex;
   flex-direction: column;
   gap: 1em;
   justify-content: center;
   align-items: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
 }
 body p {
-  font-size: 18px;
+  font-size: 1.2em;
   font-weight: 600;
 }
 span {
@@ -35,22 +37,51 @@ span {
 }
 main {
   display: flex;
+  background-color: var(--orange);
+  border-radius: 1em;
+  flex-wrap: wrap;
+  margin: 1em 3em;
+}
+main .selection {
+  display: flex;
+  flex: 50%;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--carton);
-  padding: 2em;
+  padding: 1.3em;
   border-radius: 1em;
 }
 
-main p {
+main .selection p {
   align-self: flex-start;
+}
+
+.scoreboard {
+  padding: 1em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: inherit;
+  margin: 1em;
+}
+
+.scoreboard .score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scoreboard .score p {
+  font-size: 1.5em;
 }
 
 .player,
 .computer {
   display: flex;
-  gap: 2em;
+  gap: 1em;
   margin: 0.4em;
 }
 
@@ -66,7 +97,8 @@ button {
   cursor: pointer;
   border-radius: 0.5em;
 }
-.player-btn:hover {
+.player-btn:hover,
+.reload:hover {
   background-color: var(--brown);
   color: var(--black);
 }
