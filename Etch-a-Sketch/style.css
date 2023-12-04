@@ -24,14 +24,16 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5% auto;
+  margin: 1% auto;
 }
 main .all {
   background-color: var(--black);
   border-radius: 1em;
   padding: 1em;
   color: var(--white);
-  margin-top: 1.3em;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
 }
 .theme,
 .changes {
@@ -91,11 +93,12 @@ input[type="number"] {
   border: 1px solid var(--black);
   background-color: var(--white);
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  height: 50svh;
+  display: grid;
+  align-self: center;
 }
 
-.box {
-  border: 1px solid var(--black);
+.message {
+  text-align: center;
+  font-family: cursive;
 }

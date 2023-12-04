@@ -3,11 +3,25 @@ const erase = document.querySelector("#erase");
 const clear = document.querySelector("#clear");
 const save = document.querySelector("#save");
 const pixelRange = document.querySelector("#pixelSize");
+let msg = document.querySelector(".message");
 
 let color = "black";
+let click = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   createBoard(16);
+
+  document.querySelector("body").addEventListener("click", (e) => {
+    if (e.target.tagName != "BUTTON") {
+      click = !click;
+      console.log(e.target.tagName);
+      if (click) {
+        msg.textContent = "Enjoy the Game";
+      } else {
+        msg.textContent = "Not Allowed";
+      }
+    }
+  });
 
   let selectBtn = document.querySelector(".select");
   selectBtn.addEventListener("click", () => {
@@ -17,37 +31,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function createBoard(size) {
+  container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   let numDivs = size * size;
-
-  containerWidth = container.offsetWidth;
-  containerHeight = container.offsetHeight;
-  area = parseInt(containerWidth) * parseInt(containerHeight);
-  let dimension = parseInt(area) / parseInt(size);
-  console.log(dimension);
-  console.log(area);
-  console.log(containerWidth);
-  console.log(containerHeight);
-  console.log(dimension + "px");
 
   for (let i = 0; i < numDivs; i++) {
     let div = document.createElement("div");
-    div.className = "box";
-    div.style.width = `${dimension}` + "px";
-    div.style.height = `${dimension}` + "px";
     div.addEventListener("mouseover", spreadColor);
     container.insertAdjacentElement("beforeend", div);
   }
 }
 
 function spreadColor() {
-  if (color == "random") {
-    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-  } else if (color == "monochrome") {
-    this.style.backgroundColor = "blue";
-  } else if (color == "grayscale") {
-    this.style.backgroundColor = "green";
-  } else {
-    this.style.backgroundColor = "black";
+  if (click) {
+    if (color == "random") {
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    } else if (color == "monochrome") {
+      this.style.backgroundColor = "blue";
+    } else if (color == "grayscale") {
+      this.style.backgroundColor = "green";
+    } else {
+      this.style.backgroundColor = "black";
+    }
   }
 }
 
@@ -57,7 +62,6 @@ function setColor(colorChoice) {
 
 function getSize() {
   let input = parseInt(pixelRange.value);
-  let msg = document.querySelector(".message");
   if (!input) {
     msg.textContent = "Please enter a number";
   } else if (input < 2 || input > 100) {
@@ -68,4 +72,6 @@ function getSize() {
   }
 }
 
-function resetBtn() {}
+clear.addEventListener("click", () => {
+  window.location.reload();
+});
