@@ -2,7 +2,7 @@ const container = document.querySelector(".container");
 const btnStatus = document.querySelector(".status");
 const clear = document.querySelector("#clear");
 const reset = document.querySelector("#reset");
-const save = document.querySelector("#save");
+const saveBtn = document.querySelector("#save");
 const pixelRange = document.querySelector("#pixelSize");
 let msg = document.querySelector(".message");
 
@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.tagName != "BUTTON") {
       click = !click;
       if (click) {
-        btnStatus.textContent = "Enjoy the Game";
+        btnStatus.textContent = "Game Status: Game On";
       } else {
-        btnStatus.textContent = "Not Allowed";
+        btnStatus.textContent = "Game Status: Not Allowed";
       }
     }
   });
@@ -91,3 +91,39 @@ clear.addEventListener("click", () => {
 reset.addEventListener("click", () => {
   window.location.reload();
 });
+
+// function saveImage(filename, content) {
+//   const element = document.createElement("a");
+
+//   const blob = new Blob([content], {
+//     type: "image/jpeg",
+//   });
+
+//   const link = URL.createObjectURL(blob);
+
+//   element.setAttribute("href", link);
+//   element.setAttribute("download", filename);
+
+//   // element.style.display = "none";
+
+//   document.body.appendChild(element);
+//   element.click();
+
+//   document.body.removeChild(element);
+// }
+
+window.onload = () => {
+  saveBtn.addEventListener("click", () => {
+    // alert("yes ooo");
+    // const filename = prompt("Specify filename");
+    // const content = container.value;
+    // console.log(content);
+    // console.log(filename);
+
+    // if (filename && content) {
+    //   saveImage(filename, content);
+    // }
+
+    window.print();
+  });
+};
