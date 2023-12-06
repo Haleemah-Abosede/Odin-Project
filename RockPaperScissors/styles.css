@@ -1,0 +1,132 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: ease-in 10ms;
+}
+
+:root {
+  --black: #2a2a2a;
+  --brown: #7b685d;
+  --carton: #beb3a3;
+  --orange: #e57226;
+}
+
+body {
+  background-color: var(--brown);
+  color: var(--black);
+  width: 100%;
+  overflow-x: hidden;
+  margin: 3em auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+body p {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+span {
+  color: var(--orange);
+}
+main {
+  display: flex;
+  background-color: var(--orange);
+  border-radius: 1em;
+  flex-wrap: wrap;
+  margin: 1em 3em;
+}
+main .selection {
+  display: flex;
+  flex: 50%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--carton);
+  padding: 1.3em;
+  border-radius: 1em;
+}
+
+main .selection p {
+  align-self: flex-start;
+}
+
+.scoreboard {
+  padding: 1em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: inherit;
+  margin: 1em;
+}
+
+.scoreboard .score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scoreboard .score p {
+  font-size: 1.5em;
+}
+
+.player,
+.computer {
+  display: flex;
+  gap: 1em;
+  margin: 0.4em;
+}
+
+button {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0.4em 1em;
+  background-color: var(--black);
+  color: var(--carton);
+  border: 2px solid var(--black);
+  outline: none;
+  margin-top: 0.3em;
+  cursor: pointer;
+  border-radius: 0.5em;
+}
+.player-btn:hover,
+.reload:hover {
+  background-color: var(--brown);
+  color: var(--black);
+}
+
+.no-hover {
+  cursor: not-allowed;
+}
+
+.your-choice,
+.computer-choice {
+  color: var(--orange);
+  text-align: center;
+  margin: 0.2em auto;
+}
+
+.result {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.play-game {
+  border-radius: 1em;
+  background-color: var(--orange);
+  color: var(--black);
+}
+
+.play-game:hover {
+  background-color: var(--carton);
+}
