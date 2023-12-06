@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
-const erase = document.querySelector("#erase");
+const btnStatus = document.querySelector(".status");
 const clear = document.querySelector("#clear");
+const reset = document.querySelector("#reset");
 const save = document.querySelector("#save");
 const pixelRange = document.querySelector("#pixelSize");
 let msg = document.querySelector(".message");
@@ -15,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.tagName != "BUTTON") {
       click = !click;
       if (click) {
-        msg.textContent = "Enjoy the Game";
+        btnStatus.textContent = "Enjoy the Game";
       } else {
-        msg.textContent = "Not Allowed";
+        btnStatus.textContent = "Not Allowed";
       }
     }
   });
@@ -36,31 +37,28 @@ function createBoard(size) {
 
   for (let i = 0; i < numDivs; i++) {
     let div = document.createElement("div");
+    div.classList.add("box");
     div.addEventListener("mouseover", spreadColor);
     container.insertAdjacentElement("beforeend", div);
   }
 }
-// document.querySelector("#colorPicker").onchange = (e) => {
-//   pickedColour = e.target.value;
-//   return pickedColour;
-//   console.log(e.target.value);
-// };
+
+colourInput = document.querySelector("#colorPicker");
+colourInput.onchange = () => {
+  pickedColour = colourInput.value;
+};
 
 function spreadColor() {
   if (click) {
     if (color == "random") {
       this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else if (color == "selectedColor") {
-      console.log("clicking");
-      alert("hola");
-      colourInput = document.querySelector("#colorPicker");
-      colourInput.oninput = () => {
-        pickedColour = colourInput.value;
-        this.style.backgroundColor = `${pickedColour}`;
-      };
+    } else if (color == "selectedColour") {
+      this.style.backgroundColor = `${pickedColour}`;
     } else if (color == "grayscale") {
       gray = Math.floor(Math.random() * 256);
       this.style.backgroundColor = `rgb(${gray}, ${gray}, ${gray})`;
+    } else if (color == "erase") {
+      this.style.backgroundColor = "#ededed";
     } else {
       this.style.backgroundColor = "black";
     }
@@ -84,5 +82,12 @@ function getSize() {
 }
 
 clear.addEventListener("click", () => {
+  divs = document.querySelectorAll("div.box");
+  divs.forEach((div) => {
+    div.style.backgroundColor = "#ededed";
+  });
+});
+
+reset.addEventListener("click", () => {
   window.location.reload();
 });

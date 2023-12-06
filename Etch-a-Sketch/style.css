@@ -16,6 +16,7 @@
 
 body {
   background-color: var(--lemon);
+  color: var(--black);
   font-size: calc(1em + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
   width: 100%;
 }
@@ -67,9 +68,11 @@ button {
   font-size: 18px;
 }
 
-div.button {
+div.button,
+div#join {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.2em;
 }
 input[type="number"] {
@@ -98,7 +101,8 @@ input[type="number"] {
   align-self: center;
 }
 
-.message {
+.message,
+.status {
   text-align: center;
   font-family: cursive;
 }
