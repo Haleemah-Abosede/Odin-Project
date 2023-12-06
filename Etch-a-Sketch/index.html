@@ -12,9 +12,11 @@
       <div class="all">
         <div class="theme">
           <p id="black" onclick="setColor('black')">Black</p>
-          <p id="mono" onclick="setColor('monochrome')">Monochrome</p>
           <p id="gray" onclick="setColor('grayscale')">Grayscale</p>
           <p id="multi" onclick="setColor('random')">Random</p>
+          <p class="color-p" onclick="setColor('selectedColour')">
+            Colour: <input type="color" name="colorPicker" id="colorPicker" />
+          </p>
         </div>
         <div class="container"></div>
         <div class="changes">

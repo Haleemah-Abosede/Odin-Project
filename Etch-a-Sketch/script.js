@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("body").addEventListener("click", (e) => {
     if (e.target.tagName != "BUTTON") {
       click = !click;
-      console.log(e.target.tagName);
       if (click) {
         msg.textContent = "Enjoy the Game";
       } else {
@@ -41,15 +40,27 @@ function createBoard(size) {
     container.insertAdjacentElement("beforeend", div);
   }
 }
+// document.querySelector("#colorPicker").onchange = (e) => {
+//   pickedColour = e.target.value;
+//   return pickedColour;
+//   console.log(e.target.value);
+// };
 
 function spreadColor() {
   if (click) {
     if (color == "random") {
       this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else if (color == "monochrome") {
-      this.style.backgroundColor = "blue";
+    } else if (color == "selectedColor") {
+      console.log("clicking");
+      alert("hola");
+      colourInput = document.querySelector("#colorPicker");
+      colourInput.oninput = () => {
+        pickedColour = colourInput.value;
+        this.style.backgroundColor = `${pickedColour}`;
+      };
     } else if (color == "grayscale") {
-      this.style.backgroundColor = "green";
+      gray = Math.floor(Math.random() * 256);
+      this.style.backgroundColor = `rgb(${gray}, ${gray}, ${gray})`;
     } else {
       this.style.backgroundColor = "black";
     }
