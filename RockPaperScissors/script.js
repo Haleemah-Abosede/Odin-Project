@@ -78,7 +78,7 @@ play.addEventListener("click", () => {
 
 timeoutID = setTimeout(() => {
   resetGame();
-}, 3000);
+}, 1000);
 
 function counterDec() {
   if (counterNum > 0) {
